@@ -63,8 +63,13 @@ public final class Code extends AttributeInfo {
                 int index = reader.readU1();
                 ByteCodeInstruction codeInstruction = ByteCodeInstruction.getValue(index);
                 String name = codeInstruction.name().indexOf('_') == 0 ? codeInstruction.name().substring(1) : codeInstruction.name();
-                this.codes.add(String.format("%s%s", name, getOtherValue(reader, codeInstruction.getParamsLength())));
-                for (int i = 0; i < codeInstruction.getParamsLength(); i++) {
+                int paramsLength = codeInstruction.getParamsLength();
+                String codeStr = name;
+                if (paramsLength > 0) {
+                    codeStr = String.format("%s%s", name, codeInstruction.getFormat().apply(reader.read(paramsLength)));
+                }
+                this.codes.add(codeStr);
+                for (int i = 0; i < paramsLength; i++) {
                     this.codes.add("\n");
                     current += 1;
                 }
@@ -86,26 +91,6 @@ public final class Code extends AttributeInfo {
             for (int i = 0; i < len; i++) {
                 this.exceptionTables.add(new ExceptionTable(reader));
             }
-        }
-    }
-
-    /**
-     * 得到其他值
-     *
-     * @param reader
-     * @param v
-     * @return
-     */
-    private String getOtherValue(ByteReader reader, int v) {
-        switch (v) {
-            case 1:
-                return String.format(" #%d", reader.readU1());
-            case 2:
-                return String.format(" #%d", reader.readU2());
-            case 4:
-                return String.format(" #%d", reader.readU4());
-            default:
-                return "";
         }
     }
 

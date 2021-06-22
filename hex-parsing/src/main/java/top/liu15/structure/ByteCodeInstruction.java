@@ -7,6 +7,8 @@ import top.liu15.exception.ParameterException;
 import java.nio.ByteBuffer;
 import java.util.function.Function;
 
+import static top.liu15.structure.CodeInstructionConversion.TO_POSITION_JUMP_STRING;
+
 /**
  * 字节码指令
  * 深入理解jvm虚拟机 周志明老师的 附录C
@@ -45,18 +47,18 @@ public enum ByteCodeInstruction {
     dconst_0(0x0e, 0, "将double型0推送至栈顶"),
     dconst_1(0x0f, 0, "将double型1推送至栈顶"),
 
-    bipush(0x10, 1, "将单字节的常量值(-128~127)推送至栈顶"),
-    sipush(0x11, 2, "将一个短整型常量值(-32768~32767)推送至栈顶"),
+    bipush(0x10, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将单字节的常量值(-128~127)推送至栈顶"),
+    sipush(0x11, 2, CodeInstructionConversion.TO_SHORT_CONST_STRING, "将一个短整型常量值(-32768~32767)推送至栈顶"),
 
-    ldc(0x12, 1, "将int、float或String型常量值从常量池中推送至栈顶"),
-    ldc_w(0x13, 2, "将int、float或String型常量值从常量池中推送至栈顶(宽索引)"),
-    ldc2_w(0x14, 2, "将long或double型常量值从常量池中推送至栈顶(宽索引)"),
+    ldc(0x12, 1, CodeInstructionConversion.TO_BYTE_CP_INFO_STRING, "将int、float或String型常量值从常量池中推送至栈顶"),
+    ldc_w(0x13, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "将int、float或String型常量值从常量池中推送至栈顶(宽索引)"),
+    ldc2_w(0x14, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "将long或double型常量值从常量池中推送至栈顶(宽索引)"),
 
-    iload(0x15, 1, "将指定的int型本地变量推送至栈顶"),
-    lload(0x16, 1, "将指定的long型本地变量推送至栈顶"),
-    fload(0x17, 1, "将指定的float型本地变量推送至栈顶"),
-    dload(0x18, 1, "将指定的double型本地变量推送至栈顶"),
-    aload(0x19, 1, "将指定的索引类型本地变量推送至栈顶"),
+    iload(0x15, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将指定的int型本地变量推送至栈顶"),
+    lload(0x16, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将指定的long型本地变量推送至栈顶"),
+    fload(0x17, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将指定的float型本地变量推送至栈顶"),
+    dload(0x18, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将指定的double型本地变量推送至栈顶"),
+    aload(0x19, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将指定的索引类型本地变量推送至栈顶"),
 
     iload_0(0x1a, 0, "将第一个int型本地变量推送至栈顶"),
     iload_1(0x1b, 0, "将第二个int型本地变量推送至栈顶"),
@@ -92,11 +94,11 @@ public enum ByteCodeInstruction {
     caload(0x34, 0, "将char型数组指定索引的值推送至栈顶"),
     saload(0x35, 0, "将short型数组指定索引的值推送至栈顶"),
 
-    istore(0x36, 1, "将栈顶int型数值存入指定本地变量"),
-    lstore(0x37, 1, "将栈顶long型数值存入指定本地变量"),
-    fstore(0x38, 1, "将栈顶float型数值存入指定本地变量"),
-    dstore(0x39, 1, "将栈顶double型数值存入指定本地变量"),
-    astore(0x3a, 1, "将栈顶引用型数值存入指定本地变量"),
+    istore(0x36, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将栈顶int型数值存入指定本地变量"),
+    lstore(0x37, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将栈顶long型数值存入指定本地变量"),
+    fstore(0x38, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将栈顶float型数值存入指定本地变量"),
+    dstore(0x39, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将栈顶double型数值存入指定本地变量"),
+    astore(0x3a, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "将栈顶引用型数值存入指定本地变量"),
 
     istore_0(0x3b, 0, "将栈顶int型数值存入第一个本地变量"),
     istore_1(0x3c, 0, "将栈顶int型数值存入第二个本地变量"),
@@ -192,7 +194,7 @@ public enum ByteCodeInstruction {
     ixor(0x82, 0, "将栈顶两个int数值进行'按位异或'预算并将结果压入栈顶"),
     lxor(0x83, 0, "将栈顶两个long数值进行'按位异或'预算并将结果压入栈顶"),
 
-    iinc(0x84, 2, "将指定int型变量增加指定值(如i++、i--、i+=2等)"),
+    iinc(0x84, 2, CodeInstructionConversion.TO_INCREMENT_STRING, "将指定int型变量增加指定值(如i++、i--、i+=2等)"),
 
     i2l(0x85, 0, "将栈顶int数值强制转换成long型数值并将结果压入栈顶"),
     i2f(0x86, 0, "将栈顶int数值强制转换成float型数值并将结果压入栈顶"),
@@ -220,27 +222,27 @@ public enum ByteCodeInstruction {
     dcmpl(0x97, 0, "比较栈顶两个double型数值的大小,并将结果(1、0或-1)压入栈顶;当其中一个数值位'NaN'时,将-1压入栈顶"),
     dcmpg(0x98, 0, "比较栈顶两个double型数值的大小,并将结果(1、0或-1)压入栈顶;当其中一个数值位'NaN'时,将1压入栈顶"),
 
-    ifeq(0x99, 2, "当栈顶int型数值等于0时跳转"),
-    ifne(0x9a, 2, "当栈顶int型数值不等于0时跳转"),
-    iflt(0x9b, 2, "当栈顶int型数值小于0时跳转"),
-    ifge(0x9c, 2, "当栈顶int型数值大于或等于0时跳转"),
-    ifgt(0x9d, 2, "当栈顶int型数值大于0时跳转"),
-    ifle(0x9e, 2, "当栈顶int型数值小于或等于0时跳转"),
+    ifeq(0x99, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "当栈顶int型数值等于0时跳转"),
+    ifne(0x9a, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "当栈顶int型数值不等于0时跳转"),
+    iflt(0x9b, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "当栈顶int型数值小于0时跳转"),
+    ifge(0x9c, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "当栈顶int型数值大于或等于0时跳转"),
+    ifgt(0x9d, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "当栈顶int型数值大于0时跳转"),
+    ifle(0x9e, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "当栈顶int型数值小于或等于0时跳转"),
 
-    if_icmpeq(0x9f, 2, "比较栈顶两个int型数值的大小,当结果等于0时跳转"),
-    if_icmpne(0xa0, 2, "比较栈顶两个int型数值的大小,当结果不等于0时跳转"),
-    if_icmplt(0xa1, 2, "比较栈顶两个int型数值的大小,当结果小于0时跳转"),
-    if_icmpge(0xa2, 2, "比较栈顶两个int型数值的大小,当结果大于或等于0时跳转"),
-    if_icmpgt(0xa3, 2, "比较栈顶两个int型数值的大小,当结果大于0时跳转"),
-    if_icmple(0xa4, 2, "比较栈顶两个int型数值的大小,当结果小于或等于0时跳转"),
+    if_icmpeq(0x9f, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个int型数值的大小,当结果等于0时跳转"),
+    if_icmpne(0xa0, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个int型数值的大小,当结果不等于0时跳转"),
+    if_icmplt(0xa1, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个int型数值的大小,当结果小于0时跳转"),
+    if_icmpge(0xa2, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个int型数值的大小,当结果大于或等于0时跳转"),
+    if_icmpgt(0xa3, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个int型数值的大小,当结果大于0时跳转"),
+    if_icmple(0xa4, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个int型数值的大小,当结果小于或等于0时跳转"),
 
-    if_acmpeq(0xa5, 2, v -> String.format(" (+%d)", v.getShort()), "比较栈顶两个引用型数值,当结果相等时跳转"),
-    if_acmpne(0xa6, 2, v -> String.format(" (+%d)", v.getShort()), "比较栈顶两个引用型数值,当结果不相等时跳转"),
+    if_acmpeq(0xa5, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个引用型数值,当结果相等时跳转"),
+    if_acmpne(0xa6, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "比较栈顶两个引用型数值,当结果不相等时跳转"),
 
-    _goto(0xa7, 2, "无条件跳转"),
-    jsr(0xa8, 2, "跳转至指定的16位offset位置,并将jsr的下一条指定地址压入栈顶"),
+    _goto(0xa7, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "无条件跳转"),
+    jsr(0xa8, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "跳转至指定的16位offset位置,并将jsr的下一条指定地址压入栈顶"),
 
-    ret(0xa9, 1, "返回至本地变量指定的index的指定位置(一般与jsr或jsr_w联合使用)"),
+    ret(0xa9, 1, CodeInstructionConversion.TO_BYTE_CONST_STRING, "返回至本地变量指定的index的指定位置(一般与jsr或jsr_w联合使用)"),
 
     tableswitch(0xaa, 0, "用于switch条件跳转,case值连续(可变长度指令)"),
     lookupswitch(0xab, 0, "用于switch条件跳转,case值不连续(可变长度指令)"),
@@ -252,45 +254,44 @@ public enum ByteCodeInstruction {
     areturn(0xb0, 0, "从当前方法返回对象引用"),
     _return(0xb1, 0, "从当前方法返回void"),
 
-    getstartic(0xb2, 2, "获取指定类的静态域,并将其值压入栈顶"),
-    putstatic(0xb3, 2, "为指定类的静态域赋值"),
+    getstatic(0xb2, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "获取指定类的静态域,并将其值压入栈顶"),
+    putstatic(0xb3, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "为指定类的静态域赋值"),
 
-    getfield(0xb4, 2, "获取指定类的实例域,并将其值压入栈顶"),
-    putfield(0xb5, 2, "为指定类的实例域赋值"),
+    getfield(0xb4, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "获取指定类的实例域,并将其值压入栈顶"),
+    putfield(0xb5, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "为指定类的实例域赋值"),
 
-    invokevirtual(0xb6, 2, "调用实例方法"),
-    invokespecial(0xb7, 2, v -> String.format(" #%d", v), "调用超类构造方法,实例初始化方法，私有方法"),
-    invokestatic(0xb8, 2, "调用静态方法"),
+    invokevirtual(0xb6, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "调用实例方法"),
+    invokespecial(0xb7, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "调用超类构造方法,实例初始化方法，私有方法"),
+    invokestatic(0xb8, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "调用静态方法"),
 
-    // https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html#jvms-6.5.invokeinterface
-    invokeinterface(0xb9, 4, v -> String.format(" #%d , count %d , %d", v.getShort(), v.getInt(), v.getInt()), "调用接口方法"),
-    invokedynamic(0xba, 4, "调用动态方法"),
+    invokeinterface(0xb9, 4, CodeInstructionConversion.TO_INVOKE_STRING, "调用接口方法"),
+    invokedynamic(0xba, 4, CodeInstructionConversion.TO_INVOKE_STRING, "调用动态方法"),
 
-    _new(0xbb, 2, "创建一个对象,并将其引用压入栈顶"),
-    newarray(0xbc, 1, "创建一个指定的原始类型(如int、float、char等)的素组、并将其引用值压入栈顶"),
-    anewarray(0xbd, 2, "创建一个引用类型(如类、接口、数组等)的素组、并将其引用值压入栈顶"),
+    _new(0xbb, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "创建一个对象,并将其引用压入栈顶"),
+    newarray(0xbc, 1, CodeInstructionConversion.TO_ARRAY_TYPE_STRING, "创建一个指定的原始类型(如int、float、char等)的素组、并将其引用值压入栈顶"),
+    anewarray(0xbd, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "创建一个引用类型(如类、接口、数组等)的素组、并将其引用值压入栈顶"),
 
     arraylength(0xbe, 0, "获得数组的长度值并压入栈顶"),
 
     athrow(0xbf, 0, "将栈顶的异常抛出"),
 
-    checkcast(0xc0, 2, "检验类型转换,检验未通过将抛出ClassCastException"),
+    checkcast(0xc0, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "检验类型转换,检验未通过将抛出ClassCastException"),
 
-    _instanceof(0xc1, 2, "检验对象是否时指定类的实例,如果是将1压入栈顶,否则将0压入栈顶"),
+    _instanceof(0xc1, 2, CodeInstructionConversion.TO_SHORT_CP_INFO_STRING, "检验对象是否时指定类的实例,如果是将1压入栈顶,否则将0压入栈顶"),
 
     monitorenter(0xc2, 0, "获得对象的锁,用于同步方法或同步块"),
     monitorexit(0xc3, 0, "释放对象的锁,用于同步方法或同步块"),
 
     wide(0xc4, 0, "扩展本地变量的宽度"),
 
-    multianewarray(0xc5, 3, "创建指定类型的指定维度的多维度数组(指定该命令时,操作栈中必须包含各维度的长度值),并将其引用值压入栈顶"),
+    multianewarray(0xc5, 3, CodeInstructionConversion.TO_MULTIDIMENSIONAL_STRING, "创建指定类型的指定维度的多维度数组(指定该命令时,操作栈中必须包含各维度的长度值),并将其引用值压入栈顶"),
 
-    ifnull(0xc6, 2, "为null时跳转"),
-    ifnonnull(0xc7, 2, "不为null时跳转"),
+    ifnull(0xc6, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "为null时跳转"),
+    ifnonnull(0xc7, 2, CodeInstructionConversion.TO_POSITION_JUMP_STRING, "不为null时跳转"),
 
-    goto_w(0xc8, 4, "无条件跳转(宽索引)"),
+    goto_w(0xc8, 4, CodeInstructionConversion.TO_GOTO_WIDE_STRING, "无条件跳转(宽索引)"),
 
-    jsr_w(0xc9, 4, "跳转至指定的32位offset位置,并将jsr_w的下一条指定地址压入栈顶");
+    jsr_w(0xc9, 4, CodeInstructionConversion.TO_GOTO_WIDE_STRING, "跳转至指定的32位offset位置,并将jsr_w的下一条指定地址压入栈顶");
 
 
     private int code;
