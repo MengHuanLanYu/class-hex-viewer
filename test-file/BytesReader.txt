@@ -1,0 +1,424 @@
+Classfile /D:/BytesReader.class
+  Last modified 2021-6-3; size 3296 bytes
+  MD5 checksum 6e73def684ca8ace2fd057772c01d2f9
+  Compiled from "BytesReader.java"
+public class top.liu15.BytesReader
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+    #1 = Methodref          #38.#86       // java/lang/Object."<init>":()V
+    #2 = Fieldref           #36.#87       // top/liu15/BytesReader.log:Lorg/slf4j/Logger;
+    #3 = String             #88           // BytesReader(InputStream)  文件为空,初始化失败!
+    #4 = InterfaceMethodref #89.#90       // org/slf4j/Logger.error:(Ljava/lang/String;)V
+    #5 = Class              #91           // top/liu15/exception/ParameterException
+    #6 = String             #92           // 文件获取失败
+    #7 = Methodref          #5.#93        // top/liu15/exception/ParameterException."<init>":(Ljava/lang/String;)V
+    #8 = Methodref          #36.#94       // top/liu15/BytesReader.streamToByteArray:(Ljava/io/InputStream;)[B
+    #9 = Fieldref           #36.#95       // top/liu15/BytesReader.bytes:[B
+   #10 = Methodref          #96.#97       // org/springframework/util/ObjectUtils.isEmpty:(Ljava/lang/Object;)Z
+   #11 = String             #98           // BytesReader(InputStream)  文件字节读取为空,初始化失败!
+   #12 = Methodref          #99.#100      // java/nio/ByteBuffer.wrap:([B)Ljava/nio/ByteBuffer;
+   #13 = Methodref          #99.#101      // java/nio/ByteBuffer.asReadOnlyBuffer:()Ljava/nio/ByteBuffer;
+   #14 = Fieldref           #102.#103     // java/nio/ByteOrder.BIG_ENDIAN:Ljava/nio/ByteOrder;
+   #15 = Methodref          #99.#104      // java/nio/ByteBuffer.order:(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+   #16 = Fieldref           #36.#105      // top/liu15/BytesReader.buffer:Ljava/nio/ByteBuffer;
+   #17 = Methodref          #99.#106      // java/nio/ByteBuffer.position:()I
+   #18 = Methodref          #99.#107      // java/nio/ByteBuffer.get:(I)B
+   #19 = Methodref          #99.#108      // java/nio/ByteBuffer.get:()B
+   #20 = Methodref          #36.#109      // top/liu15/BytesReader.read1:()B
+   #21 = Methodref          #110.#111     // java/lang/Byte.toUnsignedInt:(B)I
+   #22 = Methodref          #99.#112      // java/nio/ByteBuffer.getShort:()S
+   #23 = Methodref          #36.#113      // top/liu15/BytesReader.read2:()S
+   #24 = Methodref          #114.#115     // java/lang/Short.toUnsignedInt:(S)I
+   #25 = Methodref          #99.#116      // java/nio/ByteBuffer.getInt:()I
+   #26 = Methodref          #36.#117      // top/liu15/BytesReader.read4:()I
+   #27 = Methodref          #118.#119     // java/lang/Integer.toUnsignedLong:(I)J
+   #28 = Methodref          #99.#120      // java/nio/ByteBuffer.getLong:()J
+   #29 = Methodref          #36.#121      // top/liu15/BytesReader.read8:()J
+   #30 = Methodref          #122.#123     // java/lang/Long.toUnsignedString:(J)Ljava/lang/String;
+   #31 = Methodref          #124.#125     // java/io/InputStream.available:()I
+   #32 = Methodref          #124.#126     // java/io/InputStream.read:([B)I
+   #33 = Methodref          #124.#127     // java/io/InputStream.close:()V
+   #34 = Class              #128          // java/io/IOException
+   #35 = Methodref          #34.#129      // java/io/IOException.printStackTrace:()V
+   #36 = Class              #130          // top/liu15/BytesReader
+   #37 = Methodref          #131.#132     // org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+   #38 = Class              #133          // java/lang/Object
+   #39 = Utf8               log
+   #40 = Utf8               Lorg/slf4j/Logger;
+   #41 = Utf8               bytes
+   #42 = Utf8               [B
+   #43 = Utf8               buffer
+   #44 = Utf8               Ljava/nio/ByteBuffer;
+   #45 = Utf8               <init>
+   #46 = Utf8               (Ljava/io/InputStream;)V
+   #47 = Utf8               Code
+   #48 = Utf8               LineNumberTable
+   #49 = Utf8               LocalVariableTable
+   #50 = Utf8               this
+   #51 = Utf8               Ltop/liu15/BytesReader;
+   #52 = Utf8               inputStream
+   #53 = Utf8               Ljava/io/InputStream;
+   #54 = Utf8               StackMapTable
+   #55 = Class              #130          // top/liu15/BytesReader
+   #56 = Class              #134          // java/io/InputStream
+   #57 = Utf8               MethodParameters
+   #58 = Utf8               getPosition
+   #59 = Utf8               ()I
+   #60 = Utf8               read1
+   #61 = Utf8               (I)B
+   #62 = Utf8               index
+   #63 = Utf8               I
+   #64 = Utf8               ()B
+   #65 = Utf8               readU1
+   #66 = Utf8               read2
+   #67 = Utf8               ()S
+   #68 = Utf8               readU2
+   #69 = Utf8               read4
+   #70 = Utf8               readU4
+   #71 = Utf8               ()J
+   #72 = Utf8               read8
+   #73 = Utf8               readU8
+   #74 = Utf8               ()Ljava/lang/String;
+   #75 = Utf8               streamToByteArray
+   #76 = Utf8               (Ljava/io/InputStream;)[B
+   #77 = Utf8               e
+   #78 = Utf8               Ljava/io/IOException;
+   #79 = Class              #42           // "[B"
+   #80 = Class              #128          // java/io/IOException
+   #81 = Class              #135          // java/lang/Throwable
+   #82 = Utf8               <clinit>
+   #83 = Utf8               ()V
+   #84 = Utf8               SourceFile
+   #85 = Utf8               BytesReader.java
+   #86 = NameAndType        #45:#83       // "<init>":()V
+   #87 = NameAndType        #39:#40       // log:Lorg/slf4j/Logger;
+   #88 = Utf8               BytesReader(InputStream)  文件为空,初始化失败!
+   #89 = Class              #136          // org/slf4j/Logger
+   #90 = NameAndType        #137:#138     // error:(Ljava/lang/String;)V
+   #91 = Utf8               top/liu15/exception/ParameterException
+   #92 = Utf8               文件获取失败
+   #93 = NameAndType        #45:#138      // "<init>":(Ljava/lang/String;)V
+   #94 = NameAndType        #75:#76       // streamToByteArray:(Ljava/io/InputStream;)[B
+   #95 = NameAndType        #41:#42       // bytes:[B
+   #96 = Class              #139          // org/springframework/util/ObjectUtils
+   #97 = NameAndType        #140:#141     // isEmpty:(Ljava/lang/Object;)Z
+   #98 = Utf8               BytesReader(InputStream)  文件字节读取为空,初始化失败!
+   #99 = Class              #142          // java/nio/ByteBuffer
+  #100 = NameAndType        #143:#144     // wrap:([B)Ljava/nio/ByteBuffer;
+  #101 = NameAndType        #145:#146     // asReadOnlyBuffer:()Ljava/nio/ByteBuffer;
+  #102 = Class              #147          // java/nio/ByteOrder
+  #103 = NameAndType        #148:#149     // BIG_ENDIAN:Ljava/nio/ByteOrder;
+  #104 = NameAndType        #150:#151     // order:(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+  #105 = NameAndType        #43:#44       // buffer:Ljava/nio/ByteBuffer;
+  #106 = NameAndType        #152:#59      // position:()I
+  #107 = NameAndType        #153:#61      // get:(I)B
+  #108 = NameAndType        #153:#64      // get:()B
+  #109 = NameAndType        #60:#64       // read1:()B
+  #110 = Class              #154          // java/lang/Byte
+  #111 = NameAndType        #155:#156     // toUnsignedInt:(B)I
+  #112 = NameAndType        #157:#67      // getShort:()S
+  #113 = NameAndType        #66:#67       // read2:()S
+  #114 = Class              #158          // java/lang/Short
+  #115 = NameAndType        #155:#159     // toUnsignedInt:(S)I
+  #116 = NameAndType        #160:#59      // getInt:()I
+  #117 = NameAndType        #69:#59       // read4:()I
+  #118 = Class              #161          // java/lang/Integer
+  #119 = NameAndType        #162:#163     // toUnsignedLong:(I)J
+  #120 = NameAndType        #164:#71      // getLong:()J
+  #121 = NameAndType        #72:#71       // read8:()J
+  #122 = Class              #165          // java/lang/Long
+  #123 = NameAndType        #166:#167     // toUnsignedString:(J)Ljava/lang/String;
+  #124 = Class              #134          // java/io/InputStream
+  #125 = NameAndType        #168:#59      // available:()I
+  #126 = NameAndType        #169:#170     // read:([B)I
+  #127 = NameAndType        #171:#83      // close:()V
+  #128 = Utf8               java/io/IOException
+  #129 = NameAndType        #172:#83      // printStackTrace:()V
+  #130 = Utf8               top/liu15/BytesReader
+  #131 = Class              #173          // org/slf4j/LoggerFactory
+  #132 = NameAndType        #174:#175     // getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+  #133 = Utf8               java/lang/Object
+  #134 = Utf8               java/io/InputStream
+  #135 = Utf8               java/lang/Throwable
+  #136 = Utf8               org/slf4j/Logger
+  #137 = Utf8               error
+  #138 = Utf8               (Ljava/lang/String;)V
+  #139 = Utf8               org/springframework/util/ObjectUtils
+  #140 = Utf8               isEmpty
+  #141 = Utf8               (Ljava/lang/Object;)Z
+  #142 = Utf8               java/nio/ByteBuffer
+  #143 = Utf8               wrap
+  #144 = Utf8               ([B)Ljava/nio/ByteBuffer;
+  #145 = Utf8               asReadOnlyBuffer
+  #146 = Utf8               ()Ljava/nio/ByteBuffer;
+  #147 = Utf8               java/nio/ByteOrder
+  #148 = Utf8               BIG_ENDIAN
+  #149 = Utf8               Ljava/nio/ByteOrder;
+  #150 = Utf8               order
+  #151 = Utf8               (Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+  #152 = Utf8               position
+  #153 = Utf8               get
+  #154 = Utf8               java/lang/Byte
+  #155 = Utf8               toUnsignedInt
+  #156 = Utf8               (B)I
+  #157 = Utf8               getShort
+  #158 = Utf8               java/lang/Short
+  #159 = Utf8               (S)I
+  #160 = Utf8               getInt
+  #161 = Utf8               java/lang/Integer
+  #162 = Utf8               toUnsignedLong
+  #163 = Utf8               (I)J
+  #164 = Utf8               getLong
+  #165 = Utf8               java/lang/Long
+  #166 = Utf8               toUnsignedString
+  #167 = Utf8               (J)Ljava/lang/String;
+  #168 = Utf8               available
+  #169 = Utf8               read
+  #170 = Utf8               ([B)I
+  #171 = Utf8               close
+  #172 = Utf8               printStackTrace
+  #173 = Utf8               org/slf4j/LoggerFactory
+  #174 = Utf8               getLogger
+  #175 = Utf8               (Ljava/lang/Class;)Lorg/slf4j/Logger;
+{
+  public top.liu15.BytesReader(java.io.InputStream);
+    descriptor: (Ljava/io/InputStream;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aconst_null
+         5: aload_1
+         6: if_acmpne     29
+         9: getstatic     #2                  // Field log:Lorg/slf4j/Logger;
+        12: ldc           #3                  // String BytesReader(InputStream)  文件为空,初始化失败!
+        14: invokeinterface #4,  2            // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+        19: new           #5                  // class top/liu15/exception/ParameterException
+        22: dup
+        23: ldc           #6                  // String 文件获取失败
+        25: invokespecial #7                  // Method top/liu15/exception/ParameterException."<init>":(Ljava/lang/String;)V
+        28: athrow
+        29: aload_0
+        30: aload_0
+        31: aload_1
+        32: invokespecial #8                  // Method streamToByteArray:(Ljava/io/InputStream;)[B
+        35: putfield      #9                  // Field bytes:[B
+        38: aload_0
+        39: getfield      #9                  // Field bytes:[B
+        42: invokestatic  #10                 // Method org/springframework/util/ObjectUtils.isEmpty:(Ljava/lang/Object;)Z
+        45: ifeq          68
+        48: getstatic     #2                  // Field log:Lorg/slf4j/Logger;
+        51: ldc           #11                 // String BytesReader(InputStream)  文件字节读取为空,初始化失败!
+        53: invokeinterface #4,  2            // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+        58: new           #5                  // class top/liu15/exception/ParameterException
+        61: dup
+        62: ldc           #6                  // String 文件获取失败
+        64: invokespecial #7                  // Method top/liu15/exception/ParameterException."<init>":(Ljava/lang/String;)V
+        67: athrow
+        68: aload_0
+        69: aload_0
+        70: getfield      #9                  // Field bytes:[B
+        73: invokestatic  #12                 // Method java/nio/ByteBuffer.wrap:([B)Ljava/nio/ByteBuffer;
+        76: invokevirtual #13                 // Method java/nio/ByteBuffer.asReadOnlyBuffer:()Ljava/nio/ByteBuffer;
+        79: getstatic     #14                 // Field java/nio/ByteOrder.BIG_ENDIAN:Ljava/nio/ByteOrder;
+        82: invokevirtual #15                 // Method java/nio/ByteBuffer.order:(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+        85: putfield      #16                 // Field buffer:Ljava/nio/ByteBuffer;
+        88: return
+      LineNumberTable:
+        line 54: 0
+        line 55: 4
+        line 56: 9
+        line 57: 19
+        line 60: 29
+        line 61: 38
+        line 62: 48
+        line 63: 58
+        line 65: 68
+        line 67: 76
+        line 75: 82
+        line 77: 88
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      89     0  this   Ltop/liu15/BytesReader;
+            0      89     1 inputStream   Ljava/io/InputStream;
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 29
+          locals = [ class top/liu15/BytesReader, class java/io/InputStream ]
+          stack = []
+        frame_type = 38 /* same */
+    MethodParameters:
+      Name                           Flags
+      inputStream
+
+  public int getPosition();
+    descriptor: ()I
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field buffer:Ljava/nio/ByteBuffer;
+         4: invokevirtual #17                 // Method java/nio/ByteBuffer.position:()I
+         7: ireturn
+      LineNumberTable:
+        line 85: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public byte read1(int);
+    descriptor: (I)B
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #16                 // Field buffer:Ljava/nio/ByteBuffer;
+         4: iload_1
+         5: invokevirtual #18                 // Method java/nio/ByteBuffer.get:(I)B
+         8: ireturn
+      LineNumberTable:
+        line 95: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Ltop/liu15/BytesReader;
+            0       9     1 index   I
+    MethodParameters:
+      Name                           Flags
+      index
+
+  public byte read1();
+    descriptor: ()B
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field buffer:Ljava/nio/ByteBuffer;
+         4: invokevirtual #19                 // Method java/nio/ByteBuffer.get:()B
+         7: ireturn
+      LineNumberTable:
+        line 104: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public int readU1();
+    descriptor: ()I
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #20                 // Method read1:()B
+         4: invokestatic  #21                 // Method java/lang/Byte.toUnsignedInt:(B)I
+         7: ireturn
+      LineNumberTable:
+        line 113: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public short read2();
+    descriptor: ()S
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field buffer:Ljava/nio/ByteBuffer;
+         4: invokevirtual #22                 // Method java/nio/ByteBuffer.getShort:()S
+         7: ireturn
+      LineNumberTable:
+        line 122: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public int readU2();
+    descriptor: ()I
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #23                 // Method read2:()S
+         4: invokestatic  #24                 // Method java/lang/Short.toUnsignedInt:(S)I
+         7: ireturn
+      LineNumberTable:
+        line 131: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public int read4();
+    descriptor: ()I
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field buffer:Ljava/nio/ByteBuffer;
+         4: invokevirtual #25                 // Method java/nio/ByteBuffer.getInt:()I
+         7: ireturn
+      LineNumberTable:
+        line 140: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public long readU4();
+    descriptor: ()J
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #26                 // Method read4:()I
+         4: invokestatic  #27                 // Method java/lang/Integer.toUnsignedLong:(I)J
+         7: lreturn
+      LineNumberTable:
+        line 149: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public long read8();
+    descriptor: ()J
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field buffer:Ljava/nio/ByteBuffer;
+         4: invokevirtual #28                 // Method java/nio/ByteBuffer.getLong:()J
+         7: lreturn
+      LineNumberTable:
+        line 158: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  public java.lang.String readU8();
+    descriptor: ()Ljava/lang/String;
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #29                 // Method read8:()J
+         4: invokestatic  #30                 // Method java/lang/Long.toUnsignedString:(J)Ljava/lang/String;
+         7: areturn
+      LineNumberTable:
+        line 167: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/liu15/BytesReader;
+
+  static {};
+    descriptor: ()V
+    flags: ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: ldc           #36                 // class top/liu15/BytesReader
+         2: invokestatic  #37                 // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+         5: putstatic     #2                  // Field log:Lorg/slf4j/Logger;
+         8: return
+      LineNumberTable:
+        line 47: 0
+}
+SourceFile: "BytesReader.java"
