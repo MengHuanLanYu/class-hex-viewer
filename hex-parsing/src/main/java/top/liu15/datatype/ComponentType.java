@@ -7,5 +7,6 @@ package top.liu15.datatype;
  */
 public enum ComponentType {
 
-    T_CLASS, T_FILED, T_METHOD;
+    // 类，属性，方法，匿名类
+    T_CLASS, T_FILED, T_METHOD, T_INTERNAL_INTERFACE;
 }

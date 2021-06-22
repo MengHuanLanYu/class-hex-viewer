@@ -20,6 +20,7 @@ public final class AttributeFactory {
      * @return
      */
     public static AttributeInfo create(String type) {
+        System.out.println(type);
         switch (type) {
             case "Code":
                 return new Code(type);
@@ -27,12 +28,24 @@ public final class AttributeFactory {
                 return new LineNumber(type);
             case "LocalVariableTable":
                 return new LocalVariable(type);
+            case "LocalVariableTypeTable":
+                return new LocalVariable(type);
             case "SourceFile":
                 return new SourceFile(type);
             case "StackMapTable":
                 return new StackMapTable(type);
             case "MethodParameters":
                 return new MethodParameters(type);
+            case "ConstantValue":
+                return new ConstantValue(type);
+            case "RuntimeVisibleAnnotations":
+                return new RuntimeVisibleAnnotations(type);
+            case "Signature":
+                return new Signature(type);
+            case "InnerClasses":
+                return new InnerClasses(type);
+            case "BootstrapMethods":
+                return new BootstrapMethods(type);
             default:
                 log.error("the '{}' is not find at AttributeFactory", type);
                 throw new ParameterException("属性类型错误");
