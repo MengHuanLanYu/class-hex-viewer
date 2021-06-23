@@ -9,7 +9,7 @@ class字节码解析,通过class文件读取文件结构,转换为json,通过网
 
 ---
 
->>> 示例展示:读取class文件后生成的json串
+> 示例展示:读取class文件后生成的json串
 
 ```json
 {
