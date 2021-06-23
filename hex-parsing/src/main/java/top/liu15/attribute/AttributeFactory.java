@@ -20,7 +20,6 @@ public final class AttributeFactory {
      * @return
      */
     public static AttributeInfo create(String type) {
-        System.out.println(type);
         switch (type) {
             case "Code":
                 return new Code(type);

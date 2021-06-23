@@ -6,6 +6,7 @@ import top.liu15.datatype.ByteReader;
 import top.liu15.datatype.ComponentInfo;
 import top.liu15.datatype.U2;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public final class ConstantPool extends ComponentInfo {
         // 常量个数 - 1
         final int length = this.count.getValue().intValue();
         if (length > 0) {
-            this.constantInfoList = new LinkedList<>();
+            this.constantInfoList = new ArrayList<>(length);
             // 记录偏移位置
             readBefore(reader);
             for (int i = 1; i < length; i++) {
