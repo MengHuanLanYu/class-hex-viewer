@@ -45,6 +45,8 @@ public final class AttributeFactory {
                 return new InnerClasses(type);
             case "BootstrapMethods":
                 return new BootstrapMethods(type);
+            case "Exceptions":
+                return new Exceptions(type);
             default:
                 log.error("the '{}' is not find at AttributeFactory", type);
                 throw new ParameterException("属性类型错误");

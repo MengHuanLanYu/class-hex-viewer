@@ -291,7 +291,17 @@ public enum ByteCodeInstruction {
 
     goto_w(0xc8, 4, CodeInstructionConversion.TO_GOTO_WIDE_STRING, "无条件跳转(宽索引)"),
 
-    jsr_w(0xc9, 4, CodeInstructionConversion.TO_GOTO_WIDE_STRING, "跳转至指定的32位offset位置,并将jsr_w的下一条指定地址压入栈顶");
+    jsr_w(0xc9, 4, CodeInstructionConversion.TO_GOTO_WIDE_STRING, "跳转至指定的32位offset位置,并将jsr_w的下一条指定地址压入栈顶"),
+
+
+    /**
+     * https://docs.oracle.com/javase/specs/jvms/se16/html/jvms-6.html#jvms-6.2
+     * In addition to the opcodes of the instructions specified later in this chapter, which are used in class files (§4 (The class File Format)), three opcodes are reserved for internal use by a Java Virtual Machine implementation. If the instruction set of the Java Virtual Machine is extended in the future, these reserved opcodes are guaranteed not to be used.
+     * Two of the reserved opcodes, numbers 254 (0xfe) and 255 (0xff), have the mnemonics impdep1 and impdep2, respectively. These instructions are intended to provide "back doors" or traps to implementation-specific functionality implemented in software and hardware, respectively. The third reserved opcode, number 202 (0xca), has the mnemonic breakpoint and is intended to be used by debuggers to implement breakpoints.
+     */
+    impdep1(0xfe, 0, "软件中实现特定功能的后门或者陷阱"),
+    impdep2(0xff, 0, "硬件中实现特定功能的后门或者陷阱"),
+    breakpoint(0xca, 0, "实现断点");
 
 
     private int code;
