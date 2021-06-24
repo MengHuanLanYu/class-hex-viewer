@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2021/6/22 10:38
  */
 @Getter
-public class MethodParameters extends AttributeInfo {
+public final class MethodParameters extends AttributeInfo {
 
     private U1 parametersCount;
 
