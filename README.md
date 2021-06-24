@@ -7,6 +7,14 @@ class字节码解析,通过class文件读取文件结构,转换为json,通过网
 - 设计页面与数据库表
 - 将json转化为页面可读信息
 
+
+---
+
+## 属性解析未完成项
+[查看链接🔗](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.7)
+
+![](test-file/Snipaste_2021-06-24_09-16-33.png)
+
 ---
 
 > 示例展示:读取class文件后生成的json串
