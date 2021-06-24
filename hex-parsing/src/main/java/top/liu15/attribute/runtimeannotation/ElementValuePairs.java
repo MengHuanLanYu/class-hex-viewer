@@ -1,4 +1,4 @@
-package top.liu15.attribute;
+package top.liu15.attribute.runtimeannotation;
 
 import lombok.Getter;
 import top.liu15.datatype.*;
@@ -23,27 +23,6 @@ public final class ElementValuePairs extends ComponentInfo {
     @Override
     public void read(ByteReader reader) {
         this.elementNameIndex = new U2(reader, UnsignedNumber.INT_TO_CP_INFO);
-        ElementValue elementValue = new ElementValue();
-        elementValue.read(reader);
-        this.value = elementValue;
-    }
-
-    @Getter
-    public static class ElementValue extends ComponentInfo {
-        private U1 tag;
-
-        private U2 constValueIndex;
-
-        private U2 typeNameIndex;
-
-
-
-
-        @Override
-        public void read(ByteReader reader) {
-            this.tag = new U1(reader);
-            this.constValueIndex = new U2(reader,UnsignedNumber.INT_TO_CP_INFO);
-
-        }
+        this.value = new ElementValue(reader);
     }
 }

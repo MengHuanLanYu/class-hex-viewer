@@ -16,4 +16,15 @@ public final class U2 extends UnsignedInteger {
         super(U2, integerStringFunction);
         read(reader);
     }
+
+
+    /**
+     * 读取信息
+     *
+     * @param reader
+     * @return
+     */
+    public static U2 readToCPInfo(ByteReader reader) {
+        return new U2(reader, INT_TO_CP_INFO);
+    }
 }
