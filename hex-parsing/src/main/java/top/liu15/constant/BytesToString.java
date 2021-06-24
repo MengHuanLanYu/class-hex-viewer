@@ -11,18 +11,17 @@ import top.liu15.datatype.U2;
  */
 public class BytesToString extends ComponentInfo {
 
-    private final U2 len;
+    private final int len;
 
-    public BytesToString(U2 len) {
+    public BytesToString(int len) {
         this.len = len;
     }
 
     @Override
     public void read(ByteReader reader) {
         readBefore(reader);
-        int value = len.getValue().intValue();
-        byte[] bytes = new byte[value];
-        for (int i = 0; i < value; i++) {
+        byte[] bytes = new byte[this.len];
+        for (int i = 0; i < this.len; i++) {
             bytes[i] = reader.read1();
         }
         super.setDescription(toStr(bytes));

@@ -41,7 +41,7 @@ public final class Utf8Info extends ConstantInfo {
      * @param reader
      */
     private void readBytes(ByteReader reader) {
-        this.bytes = new BytesToString(this.length);
+        this.bytes = new BytesToString(this.length.getValue().intValue());
         this.bytes.read(reader);
     }
 }

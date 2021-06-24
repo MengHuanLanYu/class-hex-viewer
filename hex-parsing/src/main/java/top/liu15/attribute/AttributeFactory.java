@@ -47,6 +47,20 @@ public final class AttributeFactory {
                 return new BootstrapMethods(type);
             case "Exceptions":
                 return new Exceptions(type);
+            case "Synthetic":
+                return new AttributeInfo(type);
+            case "Deprecated":
+                return new AttributeInfo(type);
+            case "EnclosingMethod":
+                return new EnclosingMethod(type);
+            case "NestHost":
+                return new NestHost(type);
+            case "NestMembers":
+                return new NestMembers(type);
+            case "Record":
+                return new Record(type);
+            case "SourceDebugExtension":
+                return new SourceDebugExtension(type);
             default:
                 log.error("the '{}' is not find at AttributeFactory", type);
                 throw new ParameterException("属性类型错误");
