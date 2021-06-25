@@ -13,15 +13,16 @@ import java.util.List;
  * @version 1.0
  * @date 2021/6/22 16:35
  * https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.7.16
+ * https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.7.17
  */
 @Getter
-public final class RuntimeVisibleAnnotations extends AttributeInfo {
+public final class RuntimeAnnotations extends AttributeInfo {
 
     private U2 numAnnotations;
 
     private List<AnnotationEntity> annotations;
 
-    public RuntimeVisibleAnnotations(String name) {
+    public RuntimeAnnotations(String name) {
         super(name);
     }
 

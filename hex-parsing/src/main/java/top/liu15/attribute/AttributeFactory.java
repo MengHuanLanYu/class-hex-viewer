@@ -38,7 +38,13 @@ public final class AttributeFactory {
             case "ConstantValue":
                 return new ConstantValue(type);
             case "RuntimeVisibleAnnotations":
-                return new RuntimeVisibleAnnotations(type);
+                return new RuntimeAnnotations(type);
+            case "RuntimeInvisibleAnnotations":
+                return new RuntimeAnnotations(type);
+            case "RuntimeVisibleParameterAnnotations":
+                return new RuntimeParameterAnnotations(type);
+            case "RuntimeInvisibleParameterAnnotations":
+                return new RuntimeParameterAnnotations(type);
             case "Signature":
                 return new Signature(type);
             case "InnerClasses":
