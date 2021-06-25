@@ -73,6 +73,12 @@ public final class AttributeFactory {
                 return new Record(type);
             case "SourceDebugExtension":
                 return new SourceDebugExtension(type);
+            case "Module":
+                return new Module(type);
+            case "ModulePackages":
+                return new ModulePackages(type);
+            case "ModuleMainClass":
+                return new ModuleMainClass(type);
             default:
                 log.error("the '{}' is not find at AttributeFactory", type);
                 throw new ParameterException("属性类型错误");
