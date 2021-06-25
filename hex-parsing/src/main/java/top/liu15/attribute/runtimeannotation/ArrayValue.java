@@ -26,6 +26,15 @@ public final class ArrayValue extends ComponentInfo {
 
     @Override
     public void read(ByteReader reader) {
+        readBefore(reader);
+
+        this.readDescription(reader);
+
+        readAfter(reader);
+    }
+
+    @Override
+    public void readDescription(ByteReader reader) {
         this.numValues = new U2(reader);
         int len = this.numValues.getValue().intValue();
         if (len > 0) {

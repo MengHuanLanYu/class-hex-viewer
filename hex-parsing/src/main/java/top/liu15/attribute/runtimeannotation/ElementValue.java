@@ -21,10 +21,19 @@ public final class ElementValue extends ComponentInfo {
 
     @Override
     public void read(ByteReader reader) {
-        this.tag = new U1(reader);
+        readBefore(reader);
+
+        this.readDescription(reader);
+
+        readAfter(reader);
+    }
+
+    @Override
+    public void readDescription(ByteReader reader) {
+        this.tag = new U1(reader, i -> String.valueOf((char) i.intValue()));
         int tagItem = this.tag.getValue().intValue();
         ElementItemEnum elementItemEnum = ElementItemEnum.valueOf(tagItem);
         this.value = elementItemEnum.getByteToComponent().apply(reader);
-        super.setDescription(elementItemEnum.name().replace("_", ""));
+        super.setDescription(String.format("%s %s", (char) tagItem, elementItemEnum.name().replace("_", "").toLowerCase()));
     }
 }

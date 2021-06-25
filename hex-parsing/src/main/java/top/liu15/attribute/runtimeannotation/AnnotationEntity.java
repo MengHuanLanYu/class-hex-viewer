@@ -29,6 +29,15 @@ public final class AnnotationEntity extends ComponentInfo {
 
     @Override
     public void read(ByteReader reader) {
+        readBefore(reader);
+
+        this.readDescription(reader);
+
+        readAfter(reader);
+    }
+
+    @Override
+    public void readDescription(ByteReader reader) {
         this.typeIndex = new U2(reader, UnsignedNumber.INT_TO_CP_INFO);
         this.numElementValuePairs = new U2(reader);
         int len = this.numElementValuePairs.getValue().intValue();

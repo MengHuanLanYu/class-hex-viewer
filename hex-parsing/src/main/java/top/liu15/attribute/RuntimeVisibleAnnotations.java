@@ -29,13 +29,6 @@ public final class RuntimeVisibleAnnotations extends AttributeInfo {
     public void readDescription(ByteReader reader) {
         this.numAnnotations = new U2(reader);
         long l = super.getAttributeLength().getValue().longValue() - 2;
-        System.out.printf("长度 => %d\n", l);
-//        for (long i = 0; i < l; i++) {
-//            reader.read1();
-//        }
-//        if (1 == 1) {
-//            return;
-//        }
         int len = this.numAnnotations.getValue().intValue();
         if (len > 0) {
             this.annotations = new ArrayList<>(len);

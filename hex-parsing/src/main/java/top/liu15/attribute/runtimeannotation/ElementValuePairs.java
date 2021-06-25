@@ -22,6 +22,15 @@ public final class ElementValuePairs extends ComponentInfo {
 
     @Override
     public void read(ByteReader reader) {
+        readBefore(reader);
+
+        this.readDescription(reader);
+
+        readAfter(reader);
+    }
+
+    @Override
+    public void readDescription(ByteReader reader) {
         this.elementNameIndex = new U2(reader, UnsignedNumber.INT_TO_CP_INFO);
         this.value = new ElementValue(reader);
     }
