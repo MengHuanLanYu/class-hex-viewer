@@ -12,6 +12,7 @@ import java.util.List;
  * @author lhy
  * @version 1.0
  * @date 2021/6/24 17:12
+ * @see top.liu15.attribute.runtimeannotation.ElementItemEnum
  */
 @Getter
 public final class ArrayValue extends ComponentInfo {

@@ -30,7 +30,7 @@ public final class ElementValue extends ComponentInfo {
 
     @Override
     public void readDescription(ByteReader reader) {
-        this.tag = new U1(reader, i -> String.valueOf((char) i.intValue()));
+        this.tag = new U1(reader, i -> Character.toString((char) i.intValue()));
         int tagItem = this.tag.getValue().intValue();
         ElementItemEnum elementItemEnum = ElementItemEnum.valueOf(tagItem);
         this.value = elementItemEnum.getByteToComponent().apply(reader);

@@ -13,6 +13,9 @@ import java.util.stream.Stream;
  * @author lhy
  * @version 1.0
  * @date 2021/6/24 15:52
+ * @descriptor 取出 element_value 中的联合 value 对应的值
+ * @see top.liu15.attribute.runtimeannotation.ElementValue
+ * @see top.liu15.attribute.RuntimeAnnotations
  */
 @Getter
 @AllArgsConstructor
@@ -45,8 +48,15 @@ public enum ElementItemEnum {
     // [	Array type	          array_value	    Not applicable  91
     _ARRAY(91, ArrayValue::new);
 
+
+    /**
+     * 标记
+     */
     private int tag;
 
+    /**
+     * C语言中联合的结构与值
+     */
     private Function<ByteReader, ComponentInfo> byteToComponent;
 
 

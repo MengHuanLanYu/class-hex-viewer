@@ -25,12 +25,12 @@ public abstract class ComponentInfo implements FileReader {
     /**
      * 偏移位置
      */
-    protected int offset;
+    protected int _offset;
 
     /**
      * 长度
      */
-    protected int size;
+    protected int _size;
 
     /**
      * 描述
@@ -42,7 +42,7 @@ public abstract class ComponentInfo implements FileReader {
      */
     protected void readBefore(ByteReader reader) {
         // 获取偏移位置
-        this.offset = reader.getPosition();
+        this._offset = reader.getPosition();
     }
 
     /**
@@ -60,7 +60,7 @@ public abstract class ComponentInfo implements FileReader {
      */
     protected void readAfter(ByteReader reader) {
         // 记录长度
-        this.size = reader.getPosition() - this.offset;
+        this._size = reader.getPosition() - this._offset;
     }
 
     /**

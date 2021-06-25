@@ -26,7 +26,7 @@ public final class AttributeFactory {
             case "LineNumberTable":
                 return new LineNumber(type);
             case "LocalVariableTable":
-                return new LocalVariable(type);
+//                return new LocalVariable(type);
             case "LocalVariableTypeTable":
                 return new LocalVariable(type);
             case "SourceFile":
@@ -38,13 +38,19 @@ public final class AttributeFactory {
             case "ConstantValue":
                 return new ConstantValue(type);
             case "RuntimeVisibleAnnotations":
-                return new RuntimeAnnotations(type);
+//                return new RuntimeAnnotations(type);
             case "RuntimeInvisibleAnnotations":
                 return new RuntimeAnnotations(type);
             case "RuntimeVisibleParameterAnnotations":
-                return new RuntimeParameterAnnotations(type);
+//                return new RuntimeParameterAnnotations(type);
             case "RuntimeInvisibleParameterAnnotations":
                 return new RuntimeParameterAnnotations(type);
+            case "RuntimeVisibleTypeAnnotations":
+//                return new RuntimeTypeAnnotations(type);
+            case "RuntimeInvisibleTypeAnnotations":
+                return new RuntimeTypeAnnotations(type);
+            case "AnnotationDefault":
+                return new AnnotationDefault(type);
             case "Signature":
                 return new Signature(type);
             case "InnerClasses":
@@ -54,7 +60,7 @@ public final class AttributeFactory {
             case "Exceptions":
                 return new Exceptions(type);
             case "Synthetic":
-                return new AttributeInfo(type);
+//                return new AttributeInfo(type);
             case "Deprecated":
                 return new AttributeInfo(type);
             case "EnclosingMethod":

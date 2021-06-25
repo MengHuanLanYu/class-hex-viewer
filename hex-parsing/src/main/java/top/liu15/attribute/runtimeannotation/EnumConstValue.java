@@ -9,6 +9,7 @@ import top.liu15.datatype.U2;
  * @author lhy
  * @version 1.0
  * @date 2021/6/24 17:09
+ * @see top.liu15.attribute.runtimeannotation.ElementItemEnum
  */
 @Getter
 public final class EnumConstValue extends ComponentInfo {
