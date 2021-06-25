@@ -11,13 +11,10 @@ class字节码解析,通过class文件读取文件结构,转换为json,通过网
 ---
 
 ## 属性解析未完成项
-[查看链接jvm8 🔗](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.7)
-
-![](test-file/Snipaste_2021-06-24_09-16-33.png)
 
 [查看链接jvm16 🔗](https://docs.oracle.com/javase/specs/jvms/se16/html/jvms-4.html#jvms-4.7)
 
-![](test-file/Snipaste_2021-06-24_10-16-17.png)
+![](test-file/Snipaste_2021-06-25_15-00-32.png)
 
 
 ---
