@@ -4,9 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.SneakyThrows;
 import top.liu15.ClassFileInfo;
+import top.liu15.attribute.runtimeannotation.ElementItemEnum;
+import top.liu15.datatype.ByteReader;
+import top.liu15.datatype.ComponentInfo;
+import top.liu15.datatype.U2;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.function.Function;
 
 /**
  * @author lhy
@@ -14,15 +19,17 @@ import java.io.FileNotFoundException;
  * @date 2021/6/9 22:03
  */
 public class Test {
+
     @SneakyThrows
     public static void main(String[] args) throws FileNotFoundException {
 
         long begin = System.currentTimeMillis();
-        FileInputStream fileInputStream = new FileInputStream("D:\\BytesReader.class");
+        FileInputStream fileInputStream = new FileInputStream("D:\\test_class_file\\AcceptanceRecordServiceImpl.class");
         ClassFileInfo info = new ClassFileInfo(fileInputStream);
         long end = System.currentTimeMillis();
         System.out.printf("用时 ===> [%f]秒\n", (end - begin) / 1000d);
         ObjectMapper mapper = new ObjectMapper();
+
 //        mapper.enable(SerializationFeature.INDENT_OUTPUT);
 //// 允许序列化空的POJO类
 //// （否则会抛出异常）
