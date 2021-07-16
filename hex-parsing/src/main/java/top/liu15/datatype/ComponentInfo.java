@@ -38,6 +38,11 @@ public abstract class ComponentInfo implements FileReader {
     protected String description;
 
     /**
+     * 前端使用的,默认为false
+     */
+    private boolean isExpand;
+
+    /**
      * 读取之前进行操作
      */
     protected void readBefore(ByteReader reader) {

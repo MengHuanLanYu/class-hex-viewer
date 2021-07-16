@@ -1,5 +1,6 @@
 package top.liu15.constant;
 
+import lombok.Getter;
 import top.liu15.datatype.ByteReader;
 import top.liu15.datatype.U4;
 import top.liu15.datatype.UnsignedNumber;
@@ -9,6 +10,7 @@ import top.liu15.datatype.UnsignedNumber;
  * @version 1.0
  * @date 2021/6/4 0:33
  */
+@Getter
 public final class DoubleInfo extends ConstantInfo {
 
     private U4 highBytes;

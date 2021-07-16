@@ -33,5 +33,7 @@ public abstract class ConstantInfo extends ComponentInfo {
 
     private void readTag(ByteReader reader) {
         this.tag = new U1(reader);
+        // 设置描述
+        this.tag.setDescription(ConstantFactory.getDescriptionName(this.tag.getValue()));
     }
 }

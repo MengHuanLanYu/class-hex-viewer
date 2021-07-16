@@ -34,7 +34,7 @@ public interface UnsignedNumber {
     /**
      * 长整型转换为十六进制哈希值
      */
-    Function<Long, String> LONG_TO_HEX = v -> String.format("0x%08x", v).toUpperCase();
+    Function<Long, String> LONG_TO_HEX = v -> String.format("0x%s", String.format("%08x", v).toUpperCase());
 
     /**
      * 整型转换为常量池标记

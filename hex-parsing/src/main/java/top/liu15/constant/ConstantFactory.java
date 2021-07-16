@@ -11,6 +11,63 @@ import top.liu15.exception.ParameterException;
  */
 public class ConstantFactory {
 
+    public static String getDescriptionName(int tag){
+        switch (tag) {
+            case 1:
+                return "constant_utf8_info";
+            case 3:
+                // integer_info
+                return "constant_integer_info";
+            case 4:
+                // float_info
+                return "constant_float_info";
+            case 5:
+                // long_info
+                return "constant_long_info";
+            case 6:
+                // double_info
+                return "constant_double_info";
+            case 7:
+                // class_info
+                return "constant_class_info";
+            case 8:
+                // string_info
+                return "constant_string_info";
+            case 9:
+                // fieldref_info
+                return "constant_fieldref_info";
+            case 10:
+                // methodref_info
+                return "constant_methodref_info";
+            case 11:
+                // interface_methodref_info
+                return "constant_interface_methodref_info";
+            case 12:
+                // name_and_type_info
+                return "constant_name_and_type_info";
+            case 15:
+                // method_handle_info
+                return "constant_method_handle_info";
+            case 16:
+                // method_type_info
+                return "constant_method_type_info";
+            case 17:
+                // dynamic_info
+                return "constant_dynamic_info";
+            case 18:
+                // invoke_dynamic_info
+                return "constant_invoke_dynamic_info";
+            case 19:
+                // module_info
+                return "constant_module_info";
+            case 20:
+                // package_info
+                return "constant_package_info";
+            default:
+                throw new ParameterException("tag获取错误");
+        }
+    }
+
     /**
      * 创建常量信息
      *

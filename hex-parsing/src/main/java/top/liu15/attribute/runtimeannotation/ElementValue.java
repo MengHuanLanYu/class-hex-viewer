@@ -34,6 +34,6 @@ public final class ElementValue extends ComponentInfo {
         int tagItem = this.tag.getValue().intValue();
         ElementItemEnum elementItemEnum = ElementItemEnum.valueOf(tagItem);
         this.value = elementItemEnum.getByteToComponent().apply(reader);
-        super.setDescription(String.format("%s %s", (char) tagItem, elementItemEnum.name().replace("_", "").toLowerCase()));
+        super.setDescription(String.format("%s <%s>", (char) tagItem, elementItemEnum.name().replace("_", "").toLowerCase()));
     }
 }
