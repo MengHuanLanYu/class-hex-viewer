@@ -4,6 +4,7 @@ import lombok.Getter;
 import top.liu15.datatype.ByteReader;
 import top.liu15.datatype.U1;
 import top.liu15.datatype.U2;
+import top.liu15.datatype.UnsignedNumber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public final class MethodParameters extends AttributeInfo {
         private U2 accessFlags;
 
         public ParametersEntity(ByteReader reader) {
-            this.nameIndex = new U2(reader);
+            this.nameIndex = new U2(reader, UnsignedNumber.INT_TO_CP_INFO);
             this.accessFlags = new U2(reader);
             int value = this.accessFlags.getValue().intValue();
             if (value != 0) {
